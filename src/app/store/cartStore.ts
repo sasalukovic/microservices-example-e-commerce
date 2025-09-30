@@ -8,10 +8,34 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
     (set) => ({
       cart: [],
       addToCart: (product) =>
-        set((state) => ({ cart: [...state.cart, product] })),
+        set((state) => {
+          const existingProduct = state.cart.find(
+            (item) =>
+              item.id === product.id &&
+              item.selectedSize === product.selectedSize &&
+              item.selectedColor === product.selectedColor
+          );
+          if (existingProduct) {
+            return {
+              cart: state.cart.map((item) =>
+                item.id === product.id
+                  ? { ...item, quantity: item.quantity + product.quantity }
+                  : item
+              ),
+            };
+          }
+          return {
+            cart: [...state.cart, product],
+          };
+        }),
       removeFromCart: (product) =>
         set((state) => ({
-          cart: state.cart.filter((item) => item.id !== product.id),
+          cart: state.cart.filter(
+            (item) =>
+              item.id !== product.id ||
+              item.selectedSize !== product.selectedSize ||
+              item.selectedColor !== product.selectedColor
+          ),
         })),
       clearCart: () => set({ cart: [] }),
     }),
