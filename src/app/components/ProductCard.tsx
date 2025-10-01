@@ -34,7 +34,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
   return (
     // since the div is rounded image can overflow so we add overflow-hidden that image can not overflow and stay inside the div
     <div className="shadow-lg rounded-lg overflow-hidden">
-      <Link href={`/product/${product.id}`}>
+      <Link href={`/products/${product.id}`}>
         <div className="relative aspect-[2/3]">
           <Image
             src={product.images[productTypes.color]}
