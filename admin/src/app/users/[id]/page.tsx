@@ -104,6 +104,19 @@ const SingleUserPage = () => {
             </div>
           </div>
           <div className="bg-primary-foreground p-4 rounded-lg">
+            <div className="flex items-center gap-2">
+              <Avatar className="h-20 w-20">
+                <AvatarImage src="https://avatars.githubusercontent.com/u/1" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <h1 className="text-cl font-semibold">John Doe</h1>
+            </div>
+            <p className="text-sm text-muted-foreground space-y-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+              tempora!
+            </p>
+          </div>
+          <div className="bg-primary-foreground p-4 rounded-lg">
             <div className="flex items-center justify-between">
               <h1 className="text-sm font-semibold">User Information</h1>
               <Sheet>
@@ -121,7 +134,7 @@ const SingleUserPage = () => {
                 <Progress value={70} />
               </div>
               <div className="flex items-center gap-2">
-                <span>Username:</span>
+                <span>Full name:</span>
                 <span>John Doe</span>
               </div>
               <div className="flex items-center gap-2">
@@ -133,7 +146,11 @@ const SingleUserPage = () => {
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>Location:</span>
+                <span>Address:</span>
+                <span>123 Main street</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>City:</span>
                 <span>New York, USA</span>
               </div>
               <div className="flex items-center gap-2">
@@ -147,24 +164,8 @@ const SingleUserPage = () => {
               Joined on 2025.01.01.
             </p>
           </div>
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <CardList title="Recent transactions" />
-          </div>
         </div>
         <div className="w-full xl:w-2/3 space-y-6">
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <div className="flex items-center gap-2">
-              <Avatar className="h-20 w-20">
-                <AvatarImage src="https://avatars.githubusercontent.com/u/1" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              <h1 className="text-cl font-semibold">John Doe</h1>
-            </div>
-            <p className="text-sm text-muted-foreground space-y-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
-              tempora!
-            </p>
-          </div>
           <div className="bg-primary-foreground p-4 rounded-lg">
             <h1 className="text-xl font-semibold">User Activity</h1>
             <AppLineChart />

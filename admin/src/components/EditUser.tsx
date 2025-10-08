@@ -30,25 +30,25 @@ import {
 import { Button } from "./ui/button";
 
 const formSchema = z.object({
-  username: z
+  fullName: z
     .string()
-    .min(2, { message: "Username must be at least 2 characters long." })
+    .min(2, { message: "Full name must be at least 2 characters long." })
     .max(50),
   email: z.email({ message: "Invalid email address." }),
   phone: z.string().min(10).max(15),
-  location: z.string().min(2),
-  role: z.enum(["user", "admin"]),
+  address: z.string().min(2),
+  city: z.string().min(2),
 });
 
 const EditUser = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "John Doe",
+      fullName: "John Doe",
       email: "john.doe@example.com",
       phone: "1234567890",
-      location: "USA",
-      role: "user",
+      address: "123 Main street",
+      city: "New York",
     },
   });
 
@@ -61,10 +61,10 @@ const EditUser = () => {
             <form className="space-y-8">
               <FormField
                 control={form.control}
-                name="username"
+                name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Full Name</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
@@ -109,15 +109,15 @@ const EditUser = () => {
               />
               <FormField
                 control={form.control}
-                name="location"
+                name="address"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>Address</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your public location.
+                      This is your public address.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -125,22 +125,14 @@ const EditUser = () => {
               />
               <FormField
                 control={form.control}
-                name="role"
+                name="city"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role</FormLabel>
+                    <FormLabel>City</FormLabel>
                     <FormControl>
-                      <Select>
-                        <SelectTrigger className="w-[180px]">
-                          <SelectValue placeholder="User" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="admin">Admin</SelectItem>
-                          <SelectItem value="user">User</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Input {...field} />
                     </FormControl>
-                    <FormDescription>This is your public role.</FormDescription>
+                    <FormDescription>This is your city.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
